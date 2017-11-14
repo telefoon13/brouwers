@@ -6,8 +6,9 @@
 		<li><a href="#">Brouwers</a>
 			<ul>
 				<li><a href="<c:url value='/brouwers'/>">Lijst</a></li>
+				<li><a href="<c:url value='/brouwers/opalfabet'/>">Op alfabet</a></li>
 				<li><a href="<c:url value='/brouwers/toevoegen'/>">Toevoegen</a></li>
-				<li><a href="<c:url value='/brouwers/beginnaam'/>">Per postcode</a></li>
+				<li><a href="<c:url value='/brouwers/beginnaam'/>">Begint met</a></li>
 
 			</ul>
 		</li>
