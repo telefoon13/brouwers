@@ -2,6 +2,7 @@
 <%@taglib prefix='spring' uri="http://www.springframework.org/tags" %>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
 <%@taglib prefix='vdab' uri='http://vdab.be/tags' %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="nl">
 <head>
@@ -10,11 +11,17 @@
 <body>
 <vdab:menu/>
 <h1>Brouwers op begin naam</h1>
-<c:forEach var="i" begin="65" end="90" step="1">
-    <spring:url value="/brouwers/{beginNaam}" var="letterURL">
-        <spring:param name="beginNaam" value="${&#i;}"/>
-    </spring:url>
-    <a href="${letterURL}"><%=Character.toChars((Integer)pageContext.getAttribute("i"))%></a>
-</c:forEach>
+<c:url value="/brouwers" var="url"/>
+<form:form action="${url}" commandName="beginNaamForm" method="get">
+    <form:label path="beginnaam">Begin letter(s): <form:errors path="beginnaam"/></form:label>
+    <form:input path="beginnaam" autofocus="autofocus" type="search"/>
+    <input type='submit' value='Zoeken'>
+    <form:errors cssClass="fout"/>
+</form:form>
+<c:if test="${not empty brouwers}">
+    <c:forEach items='${brouwers}' var='brouwer'>
+        <h2>${brouwer.naam}</h2>
+    </c:forEach>
+</c:if>
 </body>
 </html>
