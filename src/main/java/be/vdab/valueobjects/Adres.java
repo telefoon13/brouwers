@@ -1,13 +1,26 @@
 package be.vdab.valueobjects;
 
+import be.vdab.constraints.Postcode;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class Adres implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@NotBlank
+	@SafeHtml
 	private String straat;
+	@NotBlank
+	@SafeHtml
 	private String huisNr;
+	@NotNull
+	@Postcode
 	private Integer postcode;
+	@NotBlank
+	@SafeHtml
 	private String gemeente;
 
 	public Adres(String straat, String huisNr, Integer postcode, String gemeente) {
@@ -15,6 +28,9 @@ public class Adres implements Serializable {
 		this.huisNr = huisNr;
 		this.postcode = postcode;
 		this.gemeente = gemeente;
+	}
+
+	public Adres() {
 	}
 
 	public String getStraat() {
