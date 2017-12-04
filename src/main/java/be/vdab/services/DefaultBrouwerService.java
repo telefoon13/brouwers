@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@ReadOnlyTransactionalService
 class DefaultBrouwerService implements BrouwerService {
 
 	private final BrouwerRepository brouwerRepository;
@@ -16,6 +16,7 @@ class DefaultBrouwerService implements BrouwerService {
 	}
 
 	@Override
+	@ModifyingTransactionalServiceMethod
 	public void create(Brouwer brouwer) {
 		brouwerRepository.create(brouwer);
 	}
