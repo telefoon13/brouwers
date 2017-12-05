@@ -4,15 +4,20 @@ import be.vdab.valueobjects.Adres;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.NumberFormat;
 
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "brouwers")
 public class Brouwer implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private long brouwerNr;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	@NotBlank
 	private String naam;
 	@Min(0)
@@ -20,10 +25,11 @@ public class Brouwer implements Serializable {
 	private Integer omzet;
 	@NotNull
 	@Valid
+	@Embedded
 	private Adres adres;
 
-	public Brouwer(long brouwerNr, String naam, Integer omzet, Adres adres) {
-		this.brouwerNr = brouwerNr;
+	public Brouwer(long id, String naam, Integer omzet, Adres adres) {
+		this.id = id;
 		this.naam = naam;
 		this.omzet = omzet;
 		this.adres = adres;
@@ -32,12 +38,12 @@ public class Brouwer implements Serializable {
 	public Brouwer() {
 	}
 
-	public long getBrouwerNr() {
-		return brouwerNr;
+	public long getId() {
+		return id;
 	}
 
-	public void setBrouwerNr(long brouwerNr) {
-		this.brouwerNr = brouwerNr;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNaam() {

@@ -27,7 +27,7 @@
     <tbody>
     <c:forEach items="${brouwers}" var="brouwer">
     <tr>
-        <th>${brouwer.brouwerNr}</th>
+        <th>${brouwer.id}</th>
         <th>${brouwer.naam}</th>
         <th>${brouwer.adres.straat}</th>
         <th>${brouwer.adres.huisNr}</th>
