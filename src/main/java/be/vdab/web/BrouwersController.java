@@ -3,6 +3,7 @@ package be.vdab.web;
 import be.vdab.entities.Brouwer;
 import be.vdab.services.BrouwerService;
 import be.vdab.valueobjects.BeginNaamForm;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
@@ -12,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/brouwers")
+@RequestMapping(path = "/brouwers", produces = MediaType.TEXT_HTML_VALUE)
 public class BrouwersController {
 
 	private static final String BROUWERS_VIEW = "brouwers/brouwers";

@@ -2,6 +2,7 @@ package be.vdab.web;
 
 import be.vdab.datasource.DataSourceConfig;
 import be.vdab.repositories.RepositoriesConfig;
+import be.vdab.restservices.RestControllersConfig;
 import be.vdab.services.ServiceConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -24,7 +25,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[]{ ControllersConfig.class };
+		return new Class<?>[]{ ControllersConfig.class, RestControllersConfig.class };
 	}
 
 	@Override
