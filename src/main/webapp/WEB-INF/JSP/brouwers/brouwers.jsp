@@ -26,13 +26,16 @@
     </thead>
     <tbody>
     <c:forEach items="${brouwers}" var="brouwer">
+        <spring:url value='/weer/{plaats}/temperatuur' var='url'>
+            <spring:param name='plaats' value='${brouwer.adres.gemeente}'/>
+        </spring:url>
     <tr>
         <th>${brouwer.id}</th>
         <th>${brouwer.naam}</th>
         <th>${brouwer.adres.straat}</th>
         <th>${brouwer.adres.huisNr}</th>
         <th>${brouwer.adres.postcode}</th>
-        <th>${brouwer.adres.gemeente}</th>
+        <th>${brouwer.adres.gemeente} <a href='${url}'>temperatuur</a></th>
         <th>&euro; <spring:eval expression="brouwer.omzet"/></th>
     </tr>
     </c:forEach>
